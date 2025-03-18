@@ -7,7 +7,7 @@ app.include_router(api_router)
 
 @app.get("/")
 async def root():
-    return {"message": "OmniSonic Backend Running"}
+    return {"message": "The OmniSonic Core is up and running successfully."}
 
 if __name__ == "__main__":
     import uvicorn
