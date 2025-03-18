@@ -7,3 +7,10 @@ def generate_frequency(frequency: float, duration: float = 1.0, sample_rate: int
     t = np.linspace(0, duration, int(sample_rate * duration), endpoint=False)
     wave = 0.5 * np.sin(2 * np.pi * frequency * t)
     return (wave * 32767).astype(np.int16)  #This will convert to 16-bit PCM.
+
+def blend_frequencies(frequencies: list, duration: float = 1.0, sample_rate: int = 44100):
+    """Combine multiple frequencies into a single waveform."""
+    t = np.linspace(0, duration, int(sample_rate * duration), endpoint=False)
+    # Average the waves for a balanced mix
+    wave = sum(0.5 * np.sin(2 * np.pi * f * t) for f in frequencies) / len(frequencies)
+    return (wave * 32767).astype(np.int16)
