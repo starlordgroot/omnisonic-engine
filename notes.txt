@@ -1,0 +1,8 @@
+/src
+  /api            # API endpoints (FastAPI/Flask/Django)
+  /services       # Business logic (e.g., frequency processing)
+  /utils          # Helper functions
+/tests            # Unit and integration tests
+main.py           # Entry point
+requirements.txt  # Dependencies
+.gitignore        # Ignore unnecessary files
