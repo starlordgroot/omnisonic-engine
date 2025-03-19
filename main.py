@@ -27,7 +27,7 @@ async def play_harmony_endpoint(frequency: float, duration: float = 1.0):
 
     base_wave = processor.generate_frequency(frequency, duration)
 
-    combined_waves = generate_harmonic_frequencies_ohm(frequency, duration)
+    combined_waves = generate_harmonic_frequencies_ohm(frequency)
 
     harmony_waves = processor.blend_frequencies(combined_waves, duration)
 
