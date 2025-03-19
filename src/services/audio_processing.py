@@ -1,4 +1,5 @@
 import numpy as np
+import sounddevice as sd
 
 #This function creates a sine wave for any given frequency. Sin is the most general os
 def generate_frequency(frequency: float, duration: float = 1.0, sample_rate: int = 44100):
@@ -7,6 +8,12 @@ def generate_frequency(frequency: float, duration: float = 1.0, sample_rate: int
     wave = 0.5 * np.sin(2 * np.pi * frequency * t)
     return (wave * 32767).astype(np.int16)  #This will convert to 16-bit PCM.
 
+def play_tone(frequency: float, duration: float = 1.0, sample_rate: int = 44100):
+    """Generate and play a sine wave for the given frequency and duration."""
+    t = np.linspace(0, duration, int(sample_rate * duration), endpoint=False)
+    wave = 0.5 * np.sin(2 * np.pi * frequency * t)
+    sd.play(wave, samplerate=sample_rate)
+    sd.wait()
 
 # Inputs:
 #     frequencies: A list of frequencies (e.g., [440, 550, 660]).
