@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from src.api.routes import router as api_router
 from src.api.websocket import router as ws_router
 import numpy as np
-from src.utils.frequency_helper import generate_harmonic_frequencies
+from src.utils.frequency_helper import generate_harmonic_frequencies_ohm
 import src.services.audio_processing as processor
 
 # Create the FastAPI application instance
@@ -25,11 +25,11 @@ async def play_harmony_endpoint(frequency: float, duration: float = 1.0):
     """Endpoint to play a harmony."""
     sample_rate = 44100
 
-    base_wave = processor.generate_frequency(frequency)
+    base_wave = processor.generate_frequency(frequency, duration)
 
-    combined_waves = generate_harmonic_frequencies(frequency)
+    combined_waves = generate_harmonic_frequencies_ohm(frequency, duration)
 
-    harmony_waves = processor.blend_frequencies(combined_waves)
+    harmony_waves = processor.blend_frequencies(combined_waves, duration)
 
     processor.play_tone(harmony_waves, duration)
     return {"message": f"Playing tone at {frequency} Hz for {duration} seconds"}
