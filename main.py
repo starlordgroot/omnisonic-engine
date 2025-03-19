@@ -3,6 +3,8 @@ from src.api.routes import router as api_router
 from src.api.websocket import router as ws_router
 import numpy as np
 import sounddevice as sd
+from src.utils.frequency_helper import generate_harmonic_frequencies
+from src.services.audio_processing import blend_frequencies, play_tone
 
 # Create the FastAPI application instance
 app = FastAPI(title="OmniSonic Core")
