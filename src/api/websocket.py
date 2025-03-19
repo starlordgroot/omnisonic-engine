@@ -1,6 +1,4 @@
 import json
-import asyncio
-import websockets
 from fastapi import APIRouter, WebSocket
 from src.services.audio_processing import generate_frequency
 
